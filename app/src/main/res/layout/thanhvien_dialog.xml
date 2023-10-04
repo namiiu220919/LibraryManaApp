@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/edMaTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:hint="Nhập mã thành viên"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/edHoTen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Nhập họ tên"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/edNamSinh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Nhập năm sinh"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnSaveTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CACCAC"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+        <Button
+            android:id="@+id/btnCancelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CACCAC"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+    </LinearLayout>
+</LinearLayout>
+
