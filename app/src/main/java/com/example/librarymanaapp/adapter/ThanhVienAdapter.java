@@ -48,7 +48,7 @@ public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
             tvHoTen.setText("Họ tên: " + item.getHoTen());
             tvNamSinh=v.findViewById(R.id.tvNamSinh);
             tvNamSinh.setText("Năm sinh: " + item.getNamSinh());
-            btnDelete=v.findViewById(R.id.btnDelete);
+            btnDelete=v.findViewById(R.id.btnDeleteTV);
         }
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +56,6 @@ public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
                 frg.xoa(String.valueOf(item.getMaTV()));
             }
         });
-
         return v;
-
-
     }
 }

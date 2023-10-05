@@ -38,8 +38,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center">
-            <ImageButton
-                android:id="@+id/btnDelete"
+            <ImageView
+                android:id="@+id/btnDeleteLS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/delete"

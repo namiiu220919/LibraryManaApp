@@ -36,12 +36,9 @@ public class frgThanhVien extends Fragment {
     Dialog dialog;
     EditText edMaTV,edHoTen,edNamSinh;
     Button btnSave, btnCancel;
-
     public frgThanhVien() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,7 +60,6 @@ public class frgThanhVien extends Fragment {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item=list.get(i);
                 openDialog(getActivity(),1);
-
                 return false;
             }
         });
@@ -128,36 +124,34 @@ public class frgThanhVien extends Fragment {
                 item = new ThanhVien();
                 item.setHoTen(edHoTen.getText().toString());
                 item.setNamSinh(edNamSinh.getText().toString());
-                if(validate()>0){
-                    // type = 0 (insert)
-                    if(type==0){
-                        if(dao.insert(item)>0){
+                if (validate() > 0) {
+                    if (type == 0) {
+                        // type = 0 (insert)
+                        if (dao.insert(item) > 0) {
                             Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        }else{
+                        } else {
                             Toast.makeText(context, "Thêm lỗi", Toast.LENGTH_SHORT).show();
                         }
+                    } else {
+                        //type = 1 (update)
+                        item.setMaTV(Integer.parseInt(edMaTV.getText().toString()));
+                        if (dao.update(item) > 0) {
+                            Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }else{
-                    //type = 1 (update)
-                    item.setMaTV(Integer.parseInt(edMaTV.getText().toString()));
-                    if ( dao.update(item)>0){
-                        Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
-                    }
+                    capnhatLst();
+                    dialog.dismiss();
                 }
-                capnhatLst();
-                dialog.dismiss();
             }
         });
         dialog.show();
     }
-
-
     public int validate(){
         int check = 1;
-        if(edHoTen.getText().length()==0 || edNamSinh.getText().length()==0){
-            Toast.makeText(getContext(), "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+        if(edHoTen.getText().length() ==0 || edNamSinh.getText().length()==0){
+            Toast.makeText(getContext(), "Phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
         }
         return check;
