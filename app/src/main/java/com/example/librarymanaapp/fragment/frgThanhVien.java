@@ -61,7 +61,7 @@ public class frgThanhVien extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item = list.get(i);
-                openDialog(getActivity(),1);
+                openDialog(getActivity(),1);//1 update
                 return false;
             }
         });
@@ -128,12 +128,14 @@ public class frgThanhVien extends Fragment {
                 item = new ThanhVien();
                 item.setHoTen(edHoTen.getText().toString());
                 item.setNamSinh(edNamSinh.getText().toString());
-                if(validate()==0){
+                if(validate()>0){
                     // type = 0 (insert)
-                    if(dao.insert(item)>0){
-                        Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(context, "Thêm lỗi", Toast.LENGTH_SHORT).show();
+                    if(type==0){
+                        if(dao.insert(item)==0){
+                            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(context, "Thêm lỗi", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }else{
                     //type = 1 (update)
