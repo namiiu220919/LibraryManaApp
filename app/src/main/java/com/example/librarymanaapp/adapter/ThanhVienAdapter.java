@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,7 @@ public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
     frgThanhVien frg;
     private ArrayList<ThanhVien> lists;
     TextView tvMaTV,tvHoTen,tvNamSinh;
-    ImageButton btnUpdate, btnDelete;
+    ImageView btnDelete;
 
     public ThanhVienAdapter(@NonNull Context context,frgThanhVien frg, ArrayList<ThanhVien> lists) {
         super(context,0,lists);
@@ -47,7 +48,6 @@ public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
             tvHoTen.setText("Họ tên: " + item.getHoTen());
             tvNamSinh=v.findViewById(R.id.tvNamSinh);
             tvNamSinh.setText("Năm sinh: " + item.getNamSinh());
-            btnUpdate=v.findViewById(R.id.btnUpdate);
             btnDelete=v.findViewById(R.id.btnDelete);
         }
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +56,9 @@ public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
                 frg.xoa(String.valueOf(item.getMaTV()));
             }
         });
+
         return v;
+
+
     }
 }

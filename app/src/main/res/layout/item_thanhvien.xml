@@ -8,12 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
         android:background="@drawable/khung"
         android:padding="10dp">
 
         <LinearLayout
-            android:layout_width="350dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -44,13 +43,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center">
-            <ImageButton
-                android:id="@+id/btnUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/edit"
-                app:tint="#9C4C06"/>
-            <ImageButton
+            <ImageView
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

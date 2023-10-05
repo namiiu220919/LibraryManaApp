@@ -57,17 +57,17 @@ public class frgThanhVien extends Fragment {
                 openDialog(getActivity(),0);
             }
         });
+
         lstTV.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                item = list.get(i);
-                openDialog(getActivity(),1);//1 update
+                item=list.get(i);
+                openDialog(getActivity(),1);
+
                 return false;
             }
         });
-        list = (ArrayList<ThanhVien>) dao.getAll();
-        adapter = new ThanhVienAdapter(getActivity(),this,list);
-        lstTV.setAdapter(adapter);
+
         return v;
     }
     void capnhatLst(){
@@ -112,7 +112,7 @@ public class frgThanhVien extends Fragment {
         //kiểm tra type insert 0 hay Update 1
         edMaTV.setEnabled(false);
         if(type !=0){
-            edMaTV.setText(item.getMaTV());
+            edMaTV.setText(String.valueOf(item.getMaTV()));
             edHoTen.setText(item.getHoTen());
             edNamSinh.setText(item.getNamSinh());
         }
@@ -131,7 +131,7 @@ public class frgThanhVien extends Fragment {
                 if(validate()>0){
                     // type = 0 (insert)
                     if(type==0){
-                        if(dao.insert(item)==0){
+                        if(dao.insert(item)>0){
                             Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(context, "Thêm lỗi", Toast.LENGTH_SHORT).show();
@@ -146,16 +146,17 @@ public class frgThanhVien extends Fragment {
                         Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
                     }
                 }
-
                 capnhatLst();
                 dialog.dismiss();
             }
         });
         dialog.show();
     }
+
+
     public int validate(){
         int check = 1;
-        if(TextUtils.isEmpty(edHoTen.getText().toString())||TextUtils.isEmpty(edHoTen.getText().toString())){
+        if(edHoTen.getText().length()==0 || edNamSinh.getText().length()==0){
             Toast.makeText(getContext(), "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
         }

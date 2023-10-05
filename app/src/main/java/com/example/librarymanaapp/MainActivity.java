@@ -106,14 +106,14 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                 }
                 if(item.getItemId()==R.id.nav_ThanhVien){
-                    setTitle("Quản lý phiếu mượn");
+                    setTitle("Quản lý Thành viên");
                         frgThanhVien  frgThanhVien = new frgThanhVien();
                         manager.beginTransaction()
                                 .replace(R.id.flContent, frgThanhVien)
                                 .commit();
                 }
                 if(item.getItemId()==R.id.sub_DoanhThu){
-                    setTitle("Thống kê doanh thu");
+                    setTitle("Thống kê Doanh thu");
                         frgDoanhThu frgDoanhThu = new frgDoanhThu();
                         manager.beginTransaction()
                                 .replace(R.id.flContent, frgDoanhThu)
