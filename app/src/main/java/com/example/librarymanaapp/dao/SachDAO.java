@@ -24,22 +24,22 @@ public class SachDAO {
 
     public long insert (Sach obj){
         ContentValues values = new ContentValues();
-        values.put("maSach",obj.maSach);
-        values.put("tenSach",obj.tenSach);
-        values.put("giaThue",obj.giaThue);
-        values.put("maLoai",obj.maLoai);
+        values.put("maSach",obj.getMaSach());
+        values.put("tenSach",obj.getTenSach());
+        values.put("giaThue",obj.getGiaThue());
+        values.put("maLoai",obj.getMaLoai());
 
         return db.insert("Sach", null, values);
     }
 
     public int update(Sach obj){
         ContentValues values = new ContentValues();
-        values.put("maSach",obj.maSach);
-        values.put("tenSach",obj.tenSach);
-        values.put("giaThue",obj.giaThue);
-        values.put("maLoai",obj.maLoai);
+        values.put("maSach",obj.getMaSach());
+        values.put("tenSach",obj.getTenSach());
+        values.put("giaThue",obj.getGiaThue());
+        values.put("maLoai",obj.getMaLoai());
 
-        return db.update("Sach", values, "maSach=?", new String[]{String.valueOf(obj.maSach)});
+        return db.update("Sach", values, "maSach=?", new String[]{String.valueOf(obj.getMaSach())});
     }
 
     public int delete(String id){
@@ -66,10 +66,10 @@ public class SachDAO {
         Cursor c = db.rawQuery(sql,selectionArgs);
         while (c.moveToNext()){
             Sach obj = new Sach();
-            obj.maSach = Integer.parseInt(c.getString(c.getColumnIndex("maSach")));
-            obj.tenSach = c.getString(c.getColumnIndex("tenSach"));
-            obj.giaThue = Integer.parseInt(c.getString(c.getColumnIndex("giaThue")));
-            obj.maLoai = Integer.parseInt(c.getString(c.getColumnIndex("maLoai")));
+            obj.setMaSach(Integer.parseInt(c.getString(c.getColumnIndex("maSach"))));
+            obj.setTenSach(c.getString(c.getColumnIndex("tenSach")));
+            obj.setGiaThue(Integer.parseInt(c.getString(c.getColumnIndex("giaThue"))));
+            obj.setMaLoai(Integer.parseInt(c.getString(c.getColumnIndex("maLoai"))));
             list.add(obj);
             Log.i("//======",obj.toString());
         }

@@ -25,18 +25,17 @@ public class ThanhVienDAO {
 
     public long insert (ThanhVien obj){
         ContentValues values = new ContentValues();
-        values.put("hoTen",obj.hoTen);
-        values.put("namSinh",obj.namSinh);
+        values.put("hoTen",obj.getHoTen());
+        values.put("namSinh",obj.getNamSinh());
 
         return db.insert("ThanhVien", null, values);
     }
 
     public int update(ThanhVien obj){
         ContentValues values = new ContentValues();
-        values.put("hoTen",obj.hoTen);
-        values.put("namSinh",obj.namSinh);
-
-        return db.update("ThanhVien", values, "maTV=?", new String[]{String.valueOf(obj.maTV)});
+        values.put("hoTen",obj.getHoTen());
+        values.put("namSinh",obj.getNamSinh());
+        return db.update("ThanhVien", values, "maTV=?", new String[]{String.valueOf(obj.getMaTV())});
     }
 
     public int delete(String id){
@@ -63,9 +62,9 @@ public class ThanhVienDAO {
         Cursor c = db.rawQuery(sql,selectionArgs);
         while (c.moveToNext()){
             ThanhVien obj = new ThanhVien();
-            obj.maTV=Integer.parseInt(c.getString(c.getColumnIndex("maTV")));
-            obj.hoTen=c.getString(c.getColumnIndex("hoTen"));
-            obj.namSinh=c.getString(c.getColumnIndex("namSinh"));
+            obj.setMaTV(Integer.parseInt(c.getString(c.getColumnIndex("maTV"))));
+            obj.setHoTen(c.getString(c.getColumnIndex("hoTen")));
+            obj.setNamSinh(c.getString(c.getColumnIndex("namSinh")));
             Log.i("//======",obj.toString());
             list.add(obj);
         }

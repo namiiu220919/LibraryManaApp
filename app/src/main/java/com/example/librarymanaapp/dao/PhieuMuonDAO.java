@@ -9,13 +9,16 @@ import android.util.Log;
 
 import com.example.librarymanaapp.database.DbHelper;
 import com.example.librarymanaapp.model.PhieuMuon;
+import com.example.librarymanaapp.model.Sach;
 import com.example.librarymanaapp.model.ThuThu;
+import com.example.librarymanaapp.model.Top;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PhieuMuonDAO {
     private SQLiteDatabase db;
+    private Context context;
     public PhieuMuonDAO(Context context){
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
@@ -23,28 +26,28 @@ public class PhieuMuonDAO {
 
     public long insert (PhieuMuon obj){
         ContentValues values = new ContentValues();
-        values.put("maPM",obj.maPM);
-        values.put("maTT",obj.maTT);
-        values.put("maTV",obj.maTV);
-        values.put("maSach",obj.maSach);
-        values.put("ngay", obj.ngay);
-        values.put("tienThue",obj.tienThue);
-        values.put("traSach",obj.traSach);
+        values.put("maPM",obj.getMaPM());
+        values.put("maTT",obj.getMaTT());
+        values.put("maTV",obj.getMaTV());
+        values.put("maSach",obj.getMaSach());
+        values.put("ngay", obj.getMaTT());
+        values.put("tienThue",obj.getTienThue());
+        values.put("traSach",obj.getTraSach());
 
         return db.insert("PhieuMuon", null, values);
     }
 
     public int update(PhieuMuon obj){
         ContentValues values = new ContentValues();
-        values.put("maPM",obj.maPM);
-        values.put("maTT",obj.maTT);
-        values.put("maTV",obj.maTV);
-        values.put("maSach",obj.maSach);
-        values.put("ngay", obj.ngay);
-        values.put("tienThue",obj.tienThue);
-        values.put("traSach",obj.traSach);
+        values.put("maPM",obj.getMaPM());
+        values.put("maTT",obj.getMaTT());
+        values.put("maTV",obj.getMaTV());
+        values.put("maSach",obj.getMaSach());
+        values.put("ngay", obj.getMaTT());
+        values.put("tienThue",obj.getTienThue());
+        values.put("traSach",obj.getTraSach());
 
-        return db.update("PhieuMuon", values, "maPM=?", new String[]{String.valueOf(obj.maPM)});
+        return db.update("PhieuMuon", values, "maPM=?", new String[]{String.valueOf(obj.getMaPM())});
     }
 
     public int delete(String id){
@@ -71,16 +74,49 @@ public class PhieuMuonDAO {
         Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()) {
             PhieuMuon obj = new PhieuMuon();
-            obj.maPM = Integer.parseInt(c.getString(c.getColumnIndex("maPM")));
-            obj.maTT = c.getString(c.getColumnIndex("maTT"));
-            obj.maTV = Integer.parseInt(c.getString(c.getColumnIndex("maTV")));
-            obj.maSach = Integer.parseInt(c.getString(c.getColumnIndex("maSach")));
-            obj.ngay = c.getString(c.getColumnIndex("ngay"));
-            obj.tienThue = Integer.parseInt(c.getString(c.getColumnIndex("tienThue")));
-            obj.traSach = Integer.parseInt(c.getString(c.getColumnIndex("traSach")));
+            obj.setMaPM(Integer.parseInt(c.getString(c.getColumnIndex("maPM"))));
+            obj.setMaTT(c.getString(c.getColumnIndex("maTT")));
+            obj.setMaTV(Integer.parseInt(c.getString(c.getColumnIndex("maTV"))));
+            obj.setMaSach(Integer.parseInt(c.getString(c.getColumnIndex("maSach"))));
+            obj.setNgay(c.getString(c.getColumnIndex("ngay")));
+            obj.setTienThue(Integer.parseInt(c.getString(c.getColumnIndex("tienThue"))));
+            obj.setTraSach( Integer.parseInt(c.getString(c.getColumnIndex("traSach"))));
             list.add(obj);
             Log.i("//======",obj.toString());
         }
         return list;
+    }
+
+    //Thống kê top 10'
+    @SuppressLint("Range")
+    public List<Top> getTop(){
+        String sqlTop = "SELECT maSach, count(maSach) as soLuong FROM PhieuMuon GROUP BY maSach ORDER BY soLuong DESC LIMIT 10";
+        List<Top> list = new ArrayList<Top>();
+        SachDAO sachDAO = new SachDAO(context);
+        Cursor c = db.rawQuery(sqlTop,null);
+
+        while (c.moveToNext()){
+            Top top = new Top();
+            Sach sach = sachDAO.getID(c.getString(c.getColumnIndex("maSach")));
+            top.setTenSach(sach.getTenSach());
+            top.setSoLuong(Integer.parseInt(c.getString(c.getColumnIndex("soLuong"))));
+            list.add(top);
+        }
+        return list;
+    }
+
+    @SuppressLint("Range")
+    public int getDoanhThu(String tuNgay, String denNgay) {
+        String sqlDoanhThu = "SELECT SUM(tienThue) as doanhThu FROM PhieuMuon WHERE ngay BETWEEN ? AND ?";
+        List<Integer> list = new ArrayList<Integer>();
+        Cursor c = db.rawQuery(sqlDoanhThu, new String[]{tuNgay, denNgay});
+        while (c.moveToNext()) {
+            try {
+                list.add(Integer.parseInt(c.getString(c.getColumnIndex("doanhThu"))));
+            } catch (Exception e) {
+                list.add(0);
+            }
+        }
+        return list.get(0);
     }
 }

@@ -3,13 +3,13 @@ package com.example.librarymanaapp.model;
 import java.util.Date;
 
 public class PhieuMuon {
-    public int maPM;
-    public String maTT;
-    public int maTV;
-    public int maSach;
-    public String ngay;
-    public int tienThue;
-    public int traSach;
+    private int maPM;
+    private String maTT;
+    private int maTV;
+    private int maSach;
+    private String ngay;
+    private int tienThue;
+    private int traSach;
 
     public PhieuMuon() {
     }
@@ -21,6 +21,62 @@ public class PhieuMuon {
         this.maSach = maSach;
         this.ngay = ngay;
         this.tienThue = tienThue;
+        this.traSach = traSach;
+    }
+
+    public int getMaPM() {
+        return maPM;
+    }
+
+    public void setMaPM(int maPM) {
+        this.maPM = maPM;
+    }
+
+    public String getMaTT() {
+        return maTT;
+    }
+
+    public void setMaTT(String maTT) {
+        this.maTT = maTT;
+    }
+
+    public int getMaTV() {
+        return maTV;
+    }
+
+    public void setMaTV(int maTV) {
+        this.maTV = maTV;
+    }
+
+    public int getMaSach() {
+        return maSach;
+    }
+
+    public void setMaSach(int maSach) {
+        this.maSach = maSach;
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
+    }
+
+    public int getTienThue() {
+        return tienThue;
+    }
+
+    public void setTienThue(int tienThue) {
+        this.tienThue = tienThue;
+    }
+
+    public int getTraSach() {
+        return traSach;
+    }
+
+    public void setTraSach(int traSach) {
         this.traSach = traSach;
     }
 

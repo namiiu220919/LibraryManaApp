@@ -44,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Tạo database
-//        DemoDB demoDB = new DemoDB(getApplicationContext());
-//        demoDB.thuThu();
-//        demoDB.thanhVien();
-//        demoDB.loaiSach();
-//        demoDB.sach();
-//        demoDB.phieuMuon();
+        DemoDB demoDB = new DemoDB(getApplicationContext());
+        demoDB.thuThu();
+        demoDB.thanhVien();
+        demoDB.loaiSach();
+        demoDB.sach();
+        demoDB.phieuMuon();
         drawer = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         //set toolbar thay thế cho actionbar
@@ -83,53 +83,53 @@ public class MainActivity extends AppCompatActivity {
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FragmentManager manager1 = getSupportFragmentManager();
+                FragmentManager manager = getSupportFragmentManager();
                 if(item.getItemId()==R.id.nav_PhieuMuon){
                     setTitle("Quản lý Phiếu mượn");
                         frgPhieuMuon frgPhieuMuon = new frgPhieuMuon();
-                        manager1.beginTransaction()
+                        manager.beginTransaction()
                                 .replace(R.id.flContent,frgPhieuMuon)
                                 .commit();
                 }
                 if(item.getItemId()==R.id.nav_LoaiSach){
                     setTitle("Quản lý Loại Sách");
                         frgLoaiSach frgLoaiSach = new frgLoaiSach();
-                        manager1.beginTransaction()
+                        manager.beginTransaction()
                                 .replace(R.id.flContent,frgLoaiSach)
                                 .commit();
                 }
                 if(item.getItemId()==R.id.nav_Sach){
                     setTitle("Quản lý Sách");
                         frgSach frgSach = new frgSach();
-                        manager1.beginTransaction()
+                        manager.beginTransaction()
                                 .replace(R.id.flContent,frgSach)
                                 .commit();
                 }
                 if(item.getItemId()==R.id.nav_ThanhVien){
                     setTitle("Quản lý phiếu mượn");
                         frgThanhVien  frgThanhVien = new frgThanhVien();
-                        manager1.beginTransaction()
+                        manager.beginTransaction()
                                 .replace(R.id.flContent, frgThanhVien)
                                 .commit();
                 }
                 if(item.getItemId()==R.id.sub_DoanhThu){
                     setTitle("Thống kê doanh thu");
                         frgDoanhThu frgDoanhThu = new frgDoanhThu();
-                        manager1.beginTransaction()
+                        manager.beginTransaction()
                                 .replace(R.id.flContent, frgDoanhThu)
                                 .commit();
                 }
                 if(item.getItemId()==R.id.sub_AddUser){
                     setTitle("Thêm người dùng");
                         frgAddUser frgAddUser = new frgAddUser();
-                        manager1.beginTransaction()
+                        manager.beginTransaction()
                                 .replace(R.id.flContent, frgAddUser)
                                 .commit();
                 }
                 if(item.getItemId()==R.id.sub_Pass){
                     setTitle("Thay đổi mật khẩu");
                         frgChangePass frgChangePass = new frgChangePass();
-                        manager1.beginTransaction()
+                        manager.beginTransaction()
                                 .replace(R.id.flContent, frgChangePass)
                                 .commit();
                 }

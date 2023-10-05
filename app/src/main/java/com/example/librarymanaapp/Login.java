@@ -82,6 +82,7 @@ public class Login extends AppCompatActivity {
             //xoá tình trạng đã lưu trước đó
             edit.clear();
         }else{
+            //lưu dữ liệu
             edit.putString("USERNAME",u);
             edit.putString("PASSWORD",p);
             edit.putBoolean("REMEMBER",status);

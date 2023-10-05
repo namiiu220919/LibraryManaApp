@@ -20,14 +20,15 @@ import java.util.ArrayList;
 public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
     private Context context;
     frgThanhVien frg;
-    private ArrayList<ThanhVien> list;
+    private ArrayList<ThanhVien> lists;
     TextView tvMaTV,tvHoTen,tvNamSinh;
     ImageButton btnUpdate, btnDelete;
 
-    public ThanhVienAdapter(@NonNull Context context,ArrayList<ThanhVien> list) {
-        super(context,0,list);
+    public ThanhVienAdapter(@NonNull Context context,frgThanhVien frg, ArrayList<ThanhVien> lists) {
+        super(context,0,lists);
         this.context =context;
-        this.list = list;
+        this.frg = frg;
+        this.lists = lists;
     }
 
     @NonNull
@@ -38,21 +39,21 @@ public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.item_thanhvien,null);
         }
-        final ThanhVien item = list.get(position);
+        final ThanhVien item = lists.get(position);
         if(item!=null){
             tvMaTV=v.findViewById(R.id.tvMaTV);
-            tvMaTV.setText("Mã thành viên: " + item.maTV);
+            tvMaTV.setText("Mã thành viên: " + item.getMaTV());
             tvHoTen=v.findViewById(R.id.tvHoTen);
-            tvHoTen.setText("Họ tên: " + item.hoTen);
+            tvHoTen.setText("Họ tên: " + item.getHoTen());
             tvNamSinh=v.findViewById(R.id.tvNamSinh);
-            tvNamSinh.setText("Năm sinh: " + item.namSinh);
+            tvNamSinh.setText("Năm sinh: " + item.getNamSinh());
             btnUpdate=v.findViewById(R.id.btnUpdate);
             btnDelete=v.findViewById(R.id.btnDelete);
         }
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                frg.xoa(String.valueOf(item.maTV));
+                frg.xoa(String.valueOf(item.getMaTV()));
             }
         });
         return v;

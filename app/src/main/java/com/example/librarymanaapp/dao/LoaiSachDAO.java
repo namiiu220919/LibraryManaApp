@@ -24,18 +24,18 @@ public class LoaiSachDAO {
 
     public long insert (LoaiSach obj){
         ContentValues values = new ContentValues();
-        values.put("maLoai",obj.maLoai);
-        values.put("tenLoai",obj.tenLoai);
+        values.put("maLoai",obj.getMaLoai());
+        values.put("tenLoai",obj.getTenLoai());
 
         return db.insert("LoaiSach", null, values);
     }
 
     public int update(LoaiSach obj){
         ContentValues values = new ContentValues();
-        values.put("maLoai",obj.maLoai);
-        values.put("tenLoai",obj.tenLoai);
+        values.put("maLoai",obj.getMaLoai());
+        values.put("tenLoai",obj.getTenLoai());
 
-        return db.update("LoaiSach", values, "maLoai=?", new String[]{String.valueOf(obj.maLoai)});
+        return db.update("LoaiSach", values, "maLoai=?", new String[]{String.valueOf(obj.getMaLoai())});
     }
 
     public int delete(String id){
@@ -62,8 +62,8 @@ public class LoaiSachDAO {
         Cursor c = db.rawQuery("SELECT * FROM LoaiSach",null);
         while (c.moveToNext()){
             LoaiSach obj = new LoaiSach();
-            obj.maLoai=Integer.parseInt(c.getString(c.getColumnIndex("maLoai")));
-            obj.tenLoai=c.getString(c.getColumnIndex("tenLoai"));
+            obj.setMaLoai(Integer.parseInt(c.getString(c.getColumnIndex("maLoai"))));
+            obj.setTenLoai(c.getString(c.getColumnIndex("tenLoai")));
             Log.i("//======",obj.toString());
             list.add(obj);
         }

@@ -47,19 +47,19 @@ public class frgAddUser extends Fragment {
         });
 
         btnSave.setOnClickListener(view1 -> {
-            ThuThu thuThu = new ThuThu();
-            thuThu.maTT = edUser.getText().toString();
-            thuThu.hoTen = edHoTen.getText().toString();
-            thuThu.matKhau = edPass.getText().toString();
-            if(validate() >0){
-                Toast.makeText(getActivity(), "Lưu thành công", Toast.LENGTH_SHORT).show();
-                edUser.setText("");
-                edHoTen.setText("");
-                edPass.setText("");
-                edRePass.setText("");
-            }else{
-                Toast.makeText(getActivity(), "Lưu thất bại", Toast.LENGTH_SHORT).show();
-            }
+//            ThuThu thuThu = new ThuThu();
+//            thuThu.maTT = edUser.getText().toString();
+//            thuThu.hoTen = edHoTen.getText().toString();
+//            thuThu.matKhau = edPass.getText().toString();
+//            if(validate() >0){
+//                Toast.makeText(getActivity(), "Lưu thành công", Toast.LENGTH_SHORT).show();
+//                edUser.setText("");
+//                edHoTen.setText("");
+//                edPass.setText("");
+//                edRePass.setText("");
+//            }else{
+//                Toast.makeText(getActivity(), "Lưu thất bại", Toast.LENGTH_SHORT).show();
+//            }
         });
 
         return view;

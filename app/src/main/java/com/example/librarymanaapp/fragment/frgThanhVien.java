@@ -66,13 +66,13 @@ public class frgThanhVien extends Fragment {
             }
         });
         list = (ArrayList<ThanhVien>) dao.getAll();
-        adapter = new ThanhVienAdapter(getActivity(),list);
+        adapter = new ThanhVienAdapter(getActivity(),this,list);
         lstTV.setAdapter(adapter);
         return v;
     }
     void capnhatLst(){
         list = (ArrayList<ThanhVien>) dao.getAll();
-        adapter = new ThanhVienAdapter(getActivity(),list);
+        adapter = new ThanhVienAdapter(getActivity(),this,list);
         lstTV.setAdapter(adapter);
     }
 
@@ -112,9 +112,9 @@ public class frgThanhVien extends Fragment {
         //kiểm tra type insert 0 hay Update 1
         edMaTV.setEnabled(false);
         if(type !=0){
-            edMaTV.setText(item.maTV);
-            edHoTen.setText(item.hoTen);
-            edNamSinh.setText(item.namSinh);
+            edMaTV.setText(item.getMaTV());
+            edHoTen.setText(item.getHoTen());
+            edNamSinh.setText(item.getNamSinh());
         }
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,8 +126,8 @@ public class frgThanhVien extends Fragment {
             @Override
             public void onClick(View view) {
                 item = new ThanhVien();
-                item.hoTen = edHoTen.getText().toString();
-                item.namSinh = edNamSinh.getText().toString();
+                item.setHoTen(edHoTen.getText().toString());
+                item.setNamSinh(edNamSinh.getText().toString());
                 if(validate()==0){
                     // type = 0 (insert)
                     if(dao.insert(item)>0){
@@ -137,7 +137,7 @@ public class frgThanhVien extends Fragment {
                     }
                 }else{
                     //type = 1 (update)
-                    item.maTV = Integer.parseInt(edMaTV.getText().toString());
+                    item.setMaTV(Integer.parseInt(edMaTV.getText().toString()));
                     if ( dao.update(item)>0){
                         Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                     }else{

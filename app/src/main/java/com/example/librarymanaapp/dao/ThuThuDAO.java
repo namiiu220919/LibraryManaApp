@@ -23,19 +23,19 @@ public class ThuThuDAO {
 //
     public long insert (ThuThu obj){
         ContentValues values = new ContentValues();
-        values.put("maTT",obj.maTT);
-        values.put("hoTen",obj.hoTen);
-        values.put("matKhau",obj.matKhau);
+        values.put("maTT",obj.getMaTT());
+        values.put("hoTen",obj.getHoTen());
+        values.put("matKhau",obj.getMatKhau());
         return db.insert("ThuThu", null, values);
     }
 
     public int updatePass(ThuThu obj){
         ContentValues values = new ContentValues();
 
-        values.put("hoTen",obj.hoTen);
-        values.put("matKhau",obj.matKhau);
+        values.put("hoTen",obj.getHoTen());
+        values.put("matKhau",obj.getMatKhau());
 
-        return db.update("ThuThu", values, "maTT=?", new String[]{String.valueOf(obj.maTT)});
+        return db.update("ThuThu", values, "maTT=?", new String[]{String.valueOf(obj.getMaTT())});
     }
 
     public int delete(String id){
@@ -62,9 +62,9 @@ public class ThuThuDAO {
         Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()) {
             ThuThu obj = new ThuThu();
-            obj.maTT = c.getString(c.getColumnIndex("maTT"));
-            obj.hoTen = c.getString(c.getColumnIndex("hoTen"));
-            obj.matKhau = c.getString(c.getColumnIndex("matKhau"));
+            obj.setMaTT(c.getString(c.getColumnIndex("maTT")));
+            obj.setHoTen(c.getString(c.getColumnIndex("hoTen")));
+            obj.setMatKhau(c.getString(c.getColumnIndex("matKhau")));
             Log.i("//======",obj.toString());
             list.add(obj);
         }
