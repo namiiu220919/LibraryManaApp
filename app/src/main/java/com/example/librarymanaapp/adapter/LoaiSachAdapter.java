@@ -43,7 +43,7 @@ public class LoaiSachAdapter extends ArrayAdapter<LoaiSach> {
         if(item != null){
             tvMaLoai = v.findViewById(R.id.tvMaLoai);
             tvMaLoai.setText("Mã loại: " + item.getMaLoai());
-            tvTenLoai = v.findViewById(R.id.tvTenSach);
+            tvTenLoai = v.findViewById(R.id.tvTenLoai);
             tvTenLoai.setText("Tên loại: " + item.getTenLoai());
             btnDelete = v.findViewById(R.id.btnDeleteLS);
         }

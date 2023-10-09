@@ -34,7 +34,7 @@
         android:layout_margin="20dp"
         android:gravity="center">
         <Button
-            android:id="@+id/btnSaveTV"
+            android:id="@+id/btnSaveLS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#CACCAC"
@@ -42,7 +42,7 @@
             android:textColor="@color/white"
             android:textSize="22dp" />
         <Button
-            android:id="@+id/btnCancelTV"
+            android:id="@+id/btnCancelLS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#CACCAC"

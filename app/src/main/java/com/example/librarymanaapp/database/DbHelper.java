@@ -78,7 +78,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "maTV INTEGER REFERENCES ThanhVien(maTV)," +
                 "maSach INTEGER REFERENCES Sach(maSach)," +
                 "tienThue INTEGER NOT NULL," +
-                "ngay TEXT NOT NULL," +
+                "ngay DATE NOT NULL," +
                 "traSach INTEGER NOT NULL)";
         db.execSQL(createTablePhieuMuon);
 

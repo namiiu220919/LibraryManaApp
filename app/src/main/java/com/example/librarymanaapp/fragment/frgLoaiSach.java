@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -47,25 +48,34 @@ public class frgLoaiSach extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_loai_sach, container, false);
         lstLoaiSach = v.findViewById(R.id.lstLoaiSach);
-        fltAdd=v.findViewById(R.id.fltAdd);
+        fltAdd=v.findViewById(R.id.fltAddLS);
         dao = new LoaiSachDAO(getActivity());
         capnhatLst();
         fltAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openDialog(getActivity(),0);
+            }
+        });
+        lstLoaiSach.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                item = list.get(i);
+                openDialog(getActivity(),1);
+                return false;
             }
         });
         return v;
     }
 
     protected void openDialog(final Context context, final int type){
+        //custom dialog
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.loaisach_dialog);
         edMaLoai = dialog.findViewById(R.id.edMaLoai);
         edTenLoai = dialog.findViewById(R.id.edTenLoai);
-        btnSave = dialog.findViewById(R.id.btnSave);
-        btnCancel = dialog.findViewById(R.id.btnCancel);
+        btnSave = dialog.findViewById(R.id.btnSaveLS);
+        btnCancel = dialog.findViewById(R.id.btnCancelLS);
 
         //kiểm tra type insert 0 hay update 1
         edMaLoai.setEnabled(false);
@@ -106,6 +116,7 @@ public class frgLoaiSach extends Fragment {
                 }
             }
         });
+        dialog.show();
     }
 
     public void xoa(final String Id){

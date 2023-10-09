@@ -70,15 +70,15 @@ public class MainActivity extends AppCompatActivity {
         edUser = mHeaderView.findViewById(R.id.tvUser);
         Intent i = getIntent();
         String user = i .getStringExtra("user");
-//        thuThuDAO = new ThuThuDAO(this);
-//        ThuThu thuThu = thuThuDAO.getID(user);
-//        String username = thuThu.hoTen;
-//        edUser.setText("Welcome" + username);
+        thuThuDAO = new ThuThuDAO(this);
+        ThuThu thuThu = thuThuDAO.getID(user);
+        String username = thuThu.getHoTen();
+        edUser.setText("Welcome " + username);
 
 //        admin có quyền add user
-//        if(user.equalsIgnoreCase("admin")){
-//            nv.getMenu().findItem(R.id.sub_AddUser).setVisible(true);
-//        }
+        if(user.equalsIgnoreCase("admin")){
+            nv.getMenu().findItem(R.id.sub_AddUser).setVisible(true);
+        }
         //Điều hướng navigation
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
