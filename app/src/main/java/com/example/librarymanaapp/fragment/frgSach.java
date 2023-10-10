@@ -129,29 +129,33 @@ public class frgSach extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                item = new Sach();
-                item.setTenSach(edTenSach.getText().toString());
-                item.setGiaThue(Integer.parseInt(edGiaThue.getText().toString()));
-                item.setMaLoai(maLoai);
-                if(validate()>0){
-                    if(type == 0){
-                        //type = 0 (insert)
-                        if(dao.insert(item)>0){
-                            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(context, "Thêm lỗi", Toast.LENGTH_SHORT).show();
+                try {
+                    item = new Sach();
+                    item.setTenSach(edTenSach.getText().toString());
+                    item.setGiaThue(Integer.parseInt(edGiaThue.getText().toString()));
+                    item.setMaLoai(maLoai);
+                    if(validate()>0) {
+                        if (type == 0) {
+                            //type = 0 (insert)
+                            if (dao.insert(item) > 0) {
+                                Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Thêm lỗi", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            //type == 1 (update)
+                            item.setMaSach(Integer.parseInt(edMaSach.getText().toString()));
+                            if (dao.update(item) > 0) {
+                                Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }else{
-                        //type == 1 (update)
-                        item.setMaSach(Integer.parseInt(edMaSach.getText().toString()));
-                        if(dao.update(item)>0){
-                            Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
-                        }
+                        capnhatLst();
+                        dialog.dismiss();
                     }
-                    capnhatLst();
-                    dialog.dismiss();
+                }catch (Exception e){
+                    Toast.makeText(context, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
             }
         });

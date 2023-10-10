@@ -26,6 +26,7 @@ import com.example.librarymanaapp.fragment.frgLoaiSach;
 import com.example.librarymanaapp.fragment.frgPhieuMuon;
 import com.example.librarymanaapp.fragment.frgSach;
 import com.example.librarymanaapp.fragment.frgThanhVien;
+import com.example.librarymanaapp.fragment.frgTop;
 import com.example.librarymanaapp.model.PhieuMuon;
 import com.example.librarymanaapp.model.ThuThu;
 import com.google.android.material.navigation.NavigationView;
@@ -111,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
                         manager.beginTransaction()
                                 .replace(R.id.flContent, frgThanhVien)
                                 .commit();
+                }
+                if(item.getItemId()==R.id.sub_Top){
+                    setTitle("Top 10 sách");
+                    frgTop frgTop = new frgTop();
+                    manager.beginTransaction()
+                            .replace(R.id.flContent, frgTop)
+                            .commit();
                 }
                 if(item.getItemId()==R.id.sub_DoanhThu){
                     setTitle("Thống kê Doanh thu");

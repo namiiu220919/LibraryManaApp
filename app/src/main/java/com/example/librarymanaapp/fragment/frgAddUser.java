@@ -39,27 +39,33 @@ public class frgAddUser extends Fragment {
 
         dao = new ThuThuDAO(getActivity());
 
-        btnCancel.setOnClickListener(view1 -> {
-            edUser.setText("");
-            edHoTen.setText("");
-            edPass.setText("");
-            edRePass.setText("");
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edUser.setText("");
+                edHoTen.setText("");
+                edPass.setText("");
+                edRePass.setText("");
+            }
         });
 
-        btnSave.setOnClickListener(view1 -> {
-//            ThuThu thuThu = new ThuThu();
-//            thuThu.maTT = edUser.getText().toString();
-//            thuThu.hoTen = edHoTen.getText().toString();
-//            thuThu.matKhau = edPass.getText().toString();
-//            if(validate() >0){
-//                Toast.makeText(getActivity(), "Lưu thành công", Toast.LENGTH_SHORT).show();
-//                edUser.setText("");
-//                edHoTen.setText("");
-//                edPass.setText("");
-//                edRePass.setText("");
-//            }else{
-//                Toast.makeText(getActivity(), "Lưu thất bại", Toast.LENGTH_SHORT).show();
-//            }
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ThuThu thuThu = new ThuThu();
+                thuThu.setMaTT(edUser.getText().toString());
+                thuThu.setHoTen(edHoTen.getText().toString());
+                thuThu.setMatKhau(edPass.getText().toString());
+                if(validate() >0){
+                    Toast.makeText(getActivity(), "Lưu thành công", Toast.LENGTH_SHORT).show();
+                    edUser.setText("");
+                    edHoTen.setText("");
+                    edPass.setText("");
+                    edRePass.setText("");
+                }else{
+                    Toast.makeText(getActivity(), "Lưu thất bại", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
         return view;
