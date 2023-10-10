@@ -39,6 +39,7 @@
             <EditText
                 android:id="@+id/edUser"
                 android:layout_width="match_parent"
+                android:paddingLeft="10dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bgedittext" />
@@ -55,6 +56,7 @@
                 android:id="@+id/edHoTen"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bgedittext" />
 
@@ -75,6 +77,7 @@
                     android:id="@+id/edPass"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:paddingLeft="10dp"
                     android:background="@drawable/bgedittext"
                     android:inputType="textPassword"
                     android:maxLines="1" />
@@ -98,6 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/bgedittext"
+                    android:paddingLeft="10dp"
                     android:inputType="textPassword"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -109,7 +113,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bgbutton"
-                android:text="Đổi mật khẩu" />
+                android:text="Thêm tài khoản" />
 
             <Button
                 android:id="@+id/btnCancel"

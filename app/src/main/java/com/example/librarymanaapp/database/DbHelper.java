@@ -83,10 +83,10 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(createTablePhieuMuon);
 
         String dataPhieuMuon = "insert into PhieuMuon(maTT,maTV,maSach,tienThue,ngay,traSach)values" +
-                "('TT01',1,1,10000,'20/9/2023',1)," +
-                "('TT01',2,2,12000,'20/9/2023',2)," +
-                "('TT02',3,3,10000,'20/9/2023',1)," +
-                "('TT03',4,4,11000,'20/9/2023',2)";
+                "('TT01',1,1,10000,'2023-9-23',1)," +
+                "('TT01',2,2,12000,'2023-9-23',2)," +
+                "('TT02',3,3,10000,'2023-9-23',1)," +
+                "('TT03',4,4,11000,'2023-9-23',2)";
         db.execSQL(dataPhieuMuon);
     }
 

@@ -63,7 +63,7 @@ public class SachAdapter extends ArrayAdapter<Sach> {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //xoa
+                frg.xoa(String.valueOf(item.getMaSach()));
             }
         });
 

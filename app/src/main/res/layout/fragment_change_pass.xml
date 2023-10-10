@@ -44,6 +44,7 @@
                 <EditText
                     android:id="@+id/edOldPass"
                     android:layout_width="match_parent"
+                    android:paddingLeft="10dp"
                     android:layout_height="40dp"
                     android:background="@drawable/bgedittext"
                     android:inputType="textPassword"
@@ -67,6 +68,7 @@
                     android:id="@+id/edNewPass"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:paddingLeft="10dp"
                     android:background="@drawable/bgedittext"
                     android:inputType="textPassword"
                     android:maxLines="1" />
@@ -88,6 +90,7 @@
                 <EditText
                     android:id="@+id/edRePass"
                     android:layout_width="match_parent"
+                    android:paddingLeft="10dp"
                     android:layout_height="40dp"
                     android:background="@drawable/bgedittext"
                     android:inputType="textPassword"

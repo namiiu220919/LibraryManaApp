@@ -21,7 +21,7 @@ import java.util.List;
 public class PhieuMuonDAO {
     private SQLiteDatabase db;
     private Context context;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     public PhieuMuonDAO(Context context){
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
@@ -29,7 +29,6 @@ public class PhieuMuonDAO {
 
     public long insert (PhieuMuon obj){
         ContentValues values = new ContentValues();
-        values.put("maPM",obj.getMaPM());
         values.put("maTT",obj.getMaTT());
         values.put("maTV",obj.getMaTV());
         values.put("maSach",obj.getMaSach());
@@ -42,7 +41,6 @@ public class PhieuMuonDAO {
 
     public int update(PhieuMuon obj){
         ContentValues values = new ContentValues();
-        values.put("maPM",obj.getMaPM());
         values.put("maTT",obj.getMaTT());
         values.put("maTV",obj.getMaTV());
         values.put("maSach",obj.getMaSach());

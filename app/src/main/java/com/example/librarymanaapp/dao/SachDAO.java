@@ -24,7 +24,6 @@ public class SachDAO {
 
     public long insert (Sach obj){
         ContentValues values = new ContentValues();
-        values.put("maSach",obj.getMaSach());
         values.put("tenSach",obj.getTenSach());
         values.put("giaThue",obj.getGiaThue());
         values.put("maLoai",obj.getMaLoai());
@@ -34,7 +33,6 @@ public class SachDAO {
 
     public int update(Sach obj){
         ContentValues values = new ContentValues();
-        values.put("maSach",obj.getMaSach());
         values.put("tenSach",obj.getTenSach());
         values.put("giaThue",obj.getGiaThue());
         values.put("maLoai",obj.getMaLoai());
@@ -63,7 +61,7 @@ public class SachDAO {
     @SuppressLint("Range")
     private List<Sach> getData(String sql, String...selectionArgs){
         List<Sach> list = new ArrayList<Sach>();
-        Cursor c = db.rawQuery(sql,selectionArgs);
+        Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()){
             Sach obj = new Sach();
             obj.setMaSach(Integer.parseInt(c.getString(c.getColumnIndex("maSach"))));

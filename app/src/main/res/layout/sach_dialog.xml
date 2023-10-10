@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/edMaSach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:hint="Nhập mã sách"
+            android:textSize="22dp" />
+
+        <EditText
+            android:id="@+id/edTenSach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Nhập tên sách"
+            android:textSize="22dp" />
+
+        <EditText
+            android:id="@+id/edGiaThue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Nhập giá thuê"
+            android:textSize="22dp" />
+        <Spinner
+            android:id="@+id/spLoaiSach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="22dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnSaveSach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CACCAC"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+        <Button
+            android:id="@+id/btnCancelSach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CACCAC"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+    </LinearLayout>
+</LinearLayout>
+

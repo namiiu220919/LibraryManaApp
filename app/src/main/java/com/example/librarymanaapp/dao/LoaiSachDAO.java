@@ -24,7 +24,7 @@ public class LoaiSachDAO {
 
     public long insert (LoaiSach obj){
         ContentValues values = new ContentValues();
-        values.put("maLoai",obj.getMaLoai());
+
         values.put("tenLoai",obj.getTenLoai());
 
         return db.insert("LoaiSach", null, values);
@@ -32,7 +32,6 @@ public class LoaiSachDAO {
 
     public int update(LoaiSach obj){
         ContentValues values = new ContentValues();
-        values.put("maLoai",obj.getMaLoai());
         values.put("tenLoai",obj.getTenLoai());
 
         return db.update("LoaiSach", values, "maLoai=?", new String[]{String.valueOf(obj.getMaLoai())});
@@ -51,7 +50,7 @@ public class LoaiSachDAO {
     //get data theo id
     public LoaiSach getID(String id){
         String sql ="SELECT * FROM LoaiSach WHERE maLoai=?";
-        List<LoaiSach> list = getData(sql);
+        List<LoaiSach> list = getData(sql,id);
         return list.get(0);
     }
 
@@ -59,7 +58,7 @@ public class LoaiSachDAO {
     @SuppressLint("Range")
     private List<LoaiSach> getData(String sql, String...selectionArgs){
         ArrayList<LoaiSach> list = new ArrayList<>();
-        Cursor c = db.rawQuery("SELECT * FROM LoaiSach",null);
+        Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()){
             LoaiSach obj = new LoaiSach();
             obj.setMaLoai(Integer.parseInt(c.getString(c.getColumnIndex("maLoai"))));
