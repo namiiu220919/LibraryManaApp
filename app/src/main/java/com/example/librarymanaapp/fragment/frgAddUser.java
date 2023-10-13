@@ -56,14 +56,16 @@ public class frgAddUser extends Fragment {
                 thuThu.setMaTT(edUser.getText().toString());
                 thuThu.setHoTen(edHoTen.getText().toString());
                 thuThu.setMatKhau(edPass.getText().toString());
-                if(validate() >0){
-                    Toast.makeText(getActivity(), "Lưu thành công", Toast.LENGTH_SHORT).show();
-                    edUser.setText("");
-                    edHoTen.setText("");
-                    edPass.setText("");
-                    edRePass.setText("");
-                }else{
-                    Toast.makeText(getActivity(), "Lưu thất bại", Toast.LENGTH_SHORT).show();
+                if(validate() >0) {
+                    if (dao.insert(thuThu) > 0) {
+                        Toast.makeText(getActivity(), "Lưu thành công", Toast.LENGTH_SHORT).show();
+                        edUser.setText("");
+                        edHoTen.setText("");
+                        edPass.setText("");
+                        edRePass.setText("");
+                    } else {
+                        Toast.makeText(getActivity(), "Lưu thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
