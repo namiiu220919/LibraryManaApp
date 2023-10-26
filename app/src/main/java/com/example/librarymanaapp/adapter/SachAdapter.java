@@ -57,7 +57,14 @@ public class SachAdapter extends ArrayAdapter<Sach> {
             tvGiaThue=v.findViewById(R.id.tvGiaThue);
             tvGiaThue.setText("Giá thuê: "+item.getGiaThue());
             tvLoai=v.findViewById(R.id.tvLoai);
-            tvLoai.setText("Loại sách: "+loaiSach.getTenLoai());
+
+
+            if (loaiSach != null) {
+                tvLoai.setText("Loại sách: "+loaiSach.getTenLoai());
+            } else {
+                tvLoai.setText("Loại sách: Không xác định");
+            }
+
             btnDelete =v.findViewById(R.id.btnDeleteS);
         }
         btnDelete.setOnClickListener(new View.OnClickListener() {

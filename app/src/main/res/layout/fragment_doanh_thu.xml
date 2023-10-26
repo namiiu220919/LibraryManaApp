@@ -25,6 +25,7 @@
             android:paddingLeft="5dp"
             android:textSize="16dp"
             android:textColor="@color/black"
+            android:clickable="false"
             android:layout_weight="1.4"/>
     </LinearLayout>
     <LinearLayout
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:textSize="16dp"
+            android:clickable="false"
             android:textColor="@color/black"
             android:layout_weight="1.4"/>
     </LinearLayout>

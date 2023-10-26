@@ -82,28 +82,30 @@ public class DbHelper extends SQLiteOpenHelper {
                 "traSach INTEGER NOT NULL)";
         db.execSQL(createTablePhieuMuon);
 
-        String dataPhieuMuon = "insert into PhieuMuon(maTT,maTV,maSach,tienThue,ngay,traSach)values" +
-                "('TT01',1,1,10000,'2023-9-23',1)," +
-                "('TT01',2,2,12000,'2023-9-23',2)," +
-                "('TT02',3,3,10000,'2023-9-23',1)," +
-                "('TT03',4,4,11000,'2023-9-23',2)";
-        db.execSQL(dataPhieuMuon);
+//        String dataPhieuMuon = "insert into PhieuMuon(maTT,maTV,maSach,tienThue,ngay,traSach)values" +
+//                "('TT01',1,1,10000,'2023-9-23',1)," +
+//                "('TT01',2,2,12000,'2023-9-23',2)," +
+//                "('TT02',3,3,10000,'2023-9-23',1)," +
+//                "('TT03',4,4,11000,'2023-9-23',2)";
+//        db.execSQL(dataPhieuMuon);
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        String dropTableThuThu = "drop table if exists ThuThu";
-        db.execSQL(dropTableThuThu);
-        String dropTableThanhVien = "drop table if exists ThanhVien";
-        db.execSQL(dropTableThanhVien);
-        String dropTableLoaiSach = "drop table if exists LoaiSach";
-        db.execSQL(dropTableLoaiSach);
-        String dropTableSach = "drop table if exists Sach";
-        db.execSQL(dropTableSach);
-        String dropTablePhieuMuon = "drop table if exists PhieuMuon";
-        db.execSQL(dropTablePhieuMuon);
+        if(i != i1){
+            String dropTableThuThu = "drop table if exists ThuThu";
+            db.execSQL(dropTableThuThu);
+            String dropTableThanhVien = "drop table if exists ThanhVien";
+            db.execSQL(dropTableThanhVien);
+            String dropTableLoaiSach = "drop table if exists LoaiSach";
+            db.execSQL(dropTableLoaiSach);
+            String dropTableSach = "drop table if exists Sach";
+            db.execSQL(dropTableSach);
+            String dropTablePhieuMuon = "drop table if exists PhieuMuon";
+            db.execSQL(dropTablePhieuMuon);
 
-        onCreate(db);
+            onCreate(db);
+        }
     }
 }

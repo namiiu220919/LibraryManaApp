@@ -131,6 +131,11 @@ public class frgLoaiSach extends Fragment {
                 dao.delete(Id);
                 capnhatLst();
                 dialogInterface.cancel();
+//                try{
+//
+//                }catch (Exception e) {
+//                    Toast.makeText(getContext(), "Không thể x", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

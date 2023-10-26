@@ -93,7 +93,13 @@ public class frgSach extends Fragment {
         spinnerAdapter = new LoaiSachSpinnerAdapter(context,listLS);
         spinner.setAdapter(spinnerAdapter);
 
-        spinner.setAdapter(spinnerAdapter);
+        if(listLS.isEmpty()){
+            Toast.makeText(context, "Vui lòng thêm loại sách trước", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+            return;
+        }
+
+
         //lấy mã loại sách
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -129,12 +135,20 @@ public class frgSach extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    item = new Sach();
-                    item.setTenSach(edTenSach.getText().toString());
-                    item.setGiaThue(Integer.parseInt(edGiaThue.getText().toString()));
-                    item.setMaLoai(maLoai);
-                    if(validate()>0) {
+                if(edTenSach.getText().length() == 0 || edGiaThue.length() == 0 ){
+                    Toast.makeText(context, "Phải nhập đầy đủ", Toast.LENGTH_SHORT).show();
+                }else {
+                    try {
+                        item = new Sach();
+                        item.setTenSach(edTenSach.getText().toString());
+                        item.setGiaThue(Integer.parseInt(edGiaThue.getText().toString()));
+                        item.setMaLoai(maLoai);
+
+                        if(item.getGiaThue()<0){
+                            Toast.makeText(context, "Giá thuê phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                         if (type == 0) {
                             //type = 0 (insert)
                             if (dao.insert(item) > 0) {
@@ -153,10 +167,12 @@ public class frgSach extends Fragment {
                         }
                         capnhatLst();
                         dialog.dismiss();
+
+                    }catch (Exception e){
+                        Toast.makeText(context, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                     }
-                }catch (Exception e){
-                    Toast.makeText(context, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
         dialog.show();
@@ -190,12 +206,12 @@ public class frgSach extends Fragment {
         adapter = new SachAdapter(getActivity(),this,list);
         lstSach.setAdapter(adapter);
     }
-    public int validate(){
-        int check =1;
-        if(edTenSach.getText().length() ==0 || edGiaThue.getText().length()==0){
-            Toast.makeText(getContext(), "Phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-            check = -1;
-        }
-        return check;
-    }
+//    public int validate(){
+//        int check =1;
+//        if(edTenSach.getText().length() ==0 || edGiaThue.getText().length()==0){
+//            Toast.makeText(getContext(), "Phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+//            check = -1;
+//        }
+//        return check;
+//    }
 }

@@ -51,7 +51,11 @@ public class LoaiSachDAO {
     public LoaiSach getID(String id){
         String sql ="SELECT * FROM LoaiSach WHERE maLoai=?";
         List<LoaiSach> list = getData(sql,id);
-        return list.get(0);
+        if(!list.isEmpty()){
+            return list.get(0);
+        }else{
+            return null;
+        }
     }
 
     //get data nhiều tham số
